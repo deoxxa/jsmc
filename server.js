@@ -17,4 +17,4 @@ server.on("server:close", function() {
   console.log("closed");
 });
 
-server.listen(25567);
+server.listen(process.argv[2] || 25565);
