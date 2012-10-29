@@ -1,0 +1,24 @@
+{
+  "name": "jsmc",
+  "version": "0.0.0",
+  "description": "Pure JavaScript Minecraft server",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/deoxxa/jsmc.git"
+  },
+  "keywords": [
+    "minecraft",
+    "server",
+    "network"
+  ],
+  "author": "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
+  "license": "BSD",
+  "dependencies": {
+    "dissolve": "0.1.1",
+    "steez": "~0.4.2",
+    "concentrate": "0.1.1"
+  }
+}
