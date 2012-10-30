@@ -1,3 +1,5 @@
+var Player = require("../lib/player.js");
+
 module.exports = function(game) {
   game.on("client:connect", function(client) {
     console.log("watching for login packet on client");
