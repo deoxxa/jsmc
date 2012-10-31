@@ -2,14 +2,14 @@
 
 var Game = require("./lib/game"),
     Server = require("./lib/server"),
-    Config = require('./config.js');
+    config = require("./config.js");
 
 var game = new Game();
 
-for(var i = 0; i < Config.length; i++) {
-  var file = Config[i]
+for(var i = 0; i < config.length; i++) {
+  var file = config[i]
   console.log("Loading " + file);
-  var plugin = require('./plugins/' + file);
+  var plugin = require("./plugins/" + file);
   plugin(game);
 }
 
