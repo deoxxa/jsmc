@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "description": "Pure JavaScript Minecraft server",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/deoxxa/jsmc.git"
@@ -19,6 +18,7 @@
   "dependencies": {
     "dissolve": "0.1.1",
     "steez": "~0.4.2",
-    "concentrate": "0.1.1"
+    "concentrate": "0.1.1",
+    "simplex-noise": "~2.1.1"
   }
 }

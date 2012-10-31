@@ -45,7 +45,7 @@ module.exports = function(game) {
                   });
                 });
 
-                player.client.emit("data", {pid: 0x06, x: 0, y: 10, z: 0});
+                player.client.emit("data", {pid: 0x06, x: 0, y: 30, z: 0});
                 player.client.emit("data", {
                   pid: 0x0d,
                   x: player.position.x,
