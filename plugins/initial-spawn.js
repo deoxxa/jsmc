@@ -10,7 +10,7 @@ module.exports = function(game) {
         (function(x, z) {
           game.map.get_chunk(x, z, function(err, chunk) {
             zlib.deflate(chunk.data, function(err, data) {
-              player.client.emit("data", {pid: 0x33, x: x, z: z, solid: 1, primary_bitmap: 15, add_bitmap: 15, data: data});
+              player.client.emit("data", {pid: 0x33, x: x, z: z, solid: 1, primary_bitmap: 65535, add_bitmap: 65535, data: data});
 
               sent_chunks++;
 
