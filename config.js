@@ -1,18 +1,7 @@
-module.exports = {
-	
-	"ping": {
-		"file": "ping.js",
-		"enabled": true
-	},
+module.exports = [
 
-	"login": {
-		"file": "login.js",
-		"enabled": true
-	},
+	'ping.js',
+	'login.js',
+	'initial-spawn.js'
 
-	"spawn": {
-		"file": "initial-spawn.js",
-		"enabled": true
-	}
-	
-}
+];

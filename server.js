@@ -12,12 +12,11 @@ process.argv.slice(2).filter(function(e) { return e.match(/\.js$/); }).forEach(f
   plugin(game);
 });
 
-for(var a in Config) {
-	if(Config[a].enabled) {
-		console.log("Loading " + a);
-		var plugin = require('./plugins/' + Config[a].file);
-		plugin(game);
-	}
+for(var i = 0; i < Config.length; i++) {
+  var file = Config[i]
+	console.log("Loading " + file);
+	var plugin = require('./plugins/' + file);
+	plugin(game);
 }
 
 var server = new Server();
