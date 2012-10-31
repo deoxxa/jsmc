@@ -1,6 +1,6 @@
 {
   "name": "jsmc",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Pure JavaScript Minecraft server",
   "main": "index.js",
   "scripts": {},
