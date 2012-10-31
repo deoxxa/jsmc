@@ -4,7 +4,9 @@ var Game = require("./lib/game"),
     Server = require("./lib/server"),
     config = require("./config.js");
 
-var game = new Game();
+var game = new Game({
+  mode: 1,
+});
 
 for(var i = 0; i < config.length; i++) {
   var file = config[i];
