@@ -14,9 +14,9 @@ process.argv.slice(2).filter(function(e) { return e.match(/\.js$/); }).forEach(f
 
 for(var i = 0; i < Config.length; i++) {
   var file = Config[i]
-	console.log("Loading " + file);
-	var plugin = require('./plugins/' + file);
-	plugin(game);
+  console.log("Loading " + file);
+  var plugin = require('./plugins/' + file);
+  plugin(game);
 }
 
 var server = new Server();
