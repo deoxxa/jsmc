@@ -1,7 +1,11 @@
 module.exports = function(game) {
   game.on("client:connect", function(client) {
+    console.log("waiting for server ping packet on client");
+
     client.once("packet", function(packet) {
-      if (packet.id !== 0xfe) { return; }
+      if (packet.pid !== 0xfe) { return; }
+
+      console.log("got server ping packet");
 
       client.emit("data", {
         pid: 0xff,

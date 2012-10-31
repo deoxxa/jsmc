@@ -1,9 +1,9 @@
 module.exports = function(game) {
   game.on("player:join", function(player) {
-    player.client.on("packet:0a", on_move);
-    player.client.on("packet:0b", on_move);
-    player.client.on("packet:0c", on_move);
-    player.client.on("packet:0d", on_move);
+    player.client.on("packet:0a", on_move.bind(player));
+    player.client.on("packet:0b", on_move.bind(player));
+    player.client.on("packet:0c", on_move.bind(player));
+    player.client.on("packet:0d", on_move.bind(player));
   });
 
   game.on("tick", update_positions.bind(null, game));
@@ -21,14 +21,14 @@ var on_move = function on_move(packet) {
   });
 
   ["x", "y", "z", "stance", "on_ground", "yaw", "pitch"].forEach(function(k) {
-    if (typeof packet[k] !== "undefined" && packet[k] !== player.position[k]) {
-      player.new_position[k] = packet[k];
+    if (typeof packet[k] !== "undefined" && packet[k] !== this.position[k]) {
+      this.new_position[k] = packet[k];
     }
-  });
+  }.bind(this));
 
-  if (player.new_position.y < -32) {
-    player.new_position.y = 10;
-    player.new_position.stance = 11.62;
+  if (this.new_position.y < -32) {
+    this.new_position.y = 10;
+    this.new_position.stance = 11.62;
   }
 };
 
