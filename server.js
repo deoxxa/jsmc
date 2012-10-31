@@ -7,7 +7,7 @@ var Game = require("./lib/game"),
 var game = new Game();
 
 for(var i = 0; i < config.length; i++) {
-  var file = config[i]
+  var file = config[i];
   console.log("Loading " + file);
   var plugin = require("./plugins/" + file);
   plugin(game);
