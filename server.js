@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 var Game = require("./lib/game"),
-    Server = require("./lib/server");
+    Server = require("./lib/server"),
+    Config = require('./config.js');
 
 var game = new Game();
 
@@ -10,6 +11,13 @@ process.argv.slice(2).filter(function(e) { return e.match(/\.js$/); }).forEach(f
   var plugin = require(file);
   plugin(game);
 });
+
+for(var i = 0; i < Config.length; i++) {
+  var file = Config[i]
+	console.log("Loading " + file);
+	var plugin = require('./plugins/' + file);
+	plugin(game);
+}
 
 var server = new Server();
 
