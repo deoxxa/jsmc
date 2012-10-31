@@ -9,6 +9,12 @@ Overview
 jsmc is designed to be a very flexible, very hackable, moderately performant
 Minecraft server. It's written in JavaScript and runs well under node.js.
 
+DEMO
+----
+
+There's usually a copy of recent code running on `fknsrs.biz:25565` if you just
+want to kick the tires without installing anything.
+
 Features
 --------
 
