@@ -12,7 +12,7 @@ module.exports = function(game) {
         for (y = 255; y > 0 && chunk.get_block_type(0, 0, y) === 0; --y) {}
         y += 2;
 
-        var player = new Player(client, game.get_eid(), packet.username, {x: 0, y: y, z: 0, stance: y + 1.62, yaw: 0, pitch: 0});
+        var player = new Player(client, game, packet.username, {x: 0, y: y, z: 0, stance: y + 1.62, yaw: 0, pitch: 0});
 
         console.log("created player " + player.name + " and spawning at " + [player.position.x, player.position.y, player.position.z].join(","));
 
