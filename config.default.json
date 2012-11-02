@@ -1,0 +1,15 @@
+{
+  "port": 25565,
+  "gamemode": 1,
+  "plugins": [
+    "server-ping.js",
+    "ping.js",
+    "login.js",
+    "initial-spawn.js",
+    "movement.js",
+    "join-part.js",
+    "chat.js",
+    "respawn.js",
+    "moduleloader.js"
+  ]
+}

@@ -1,15 +1,20 @@
 #!/usr/bin/env node
 
+var nconf = require('nconf');
+
+nconf.file({ file: "./config.json" });
+
 var Game = require("./lib/game"),
-    Server = require("./lib/server"),
-    config = require("./config.js");
+    Server = require("./lib/server");
 
 var game = new Game({
-  mode: 1,
+  mode: nconf.get("gamemode"),
 });
 
-for(var i = 0; i < config.length; i++) {
-  var file = config[i];
+var plugins = nconf.get("plugins");
+
+for(var i = 0; i < plugins.length; i++) {
+  var file = plugins[i];
   console.log("Loading " + file);
   var plugin = require("./plugins/" + file);
   plugin(game);
@@ -26,6 +31,7 @@ for (var x = -7; x <= 7; ++x) {
 }
 
 var server = new Server();
+var port = nconf.get("port") || 25565;
 
 server.on("client:connect", game.add_client.bind(game));
 
