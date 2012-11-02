@@ -20,6 +20,7 @@
     "steez": "~0.4.2",
     "concentrate": "0.1.1",
     "simplex-noise": "~2.1.1",
-    "nconf": "0.6.4"
+    "nconf": "0.6.4",
+    "optimist": "~0.3.5"
   }
 }
