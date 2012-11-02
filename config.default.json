@@ -17,6 +17,7 @@
     "join-part.js",
     "chat.js",
     "respawn.js",
-    "moduleloader.js"
+    "moduleloader.js",
+    "digging.js"
   ]
 }
