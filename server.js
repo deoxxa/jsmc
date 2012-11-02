@@ -45,7 +45,6 @@ for (var x = -7; x <= 7; ++x) {
 }
 
 var server = new Server();
-var port = nconf.get("server:port") || 25565;
 
 server.on("client:connect", game.add_client.bind(game));
 
@@ -57,4 +56,4 @@ server.on("server:close", function() {
   console.log("closed");
 });
 
-server.listen(process.argv[2] || 25565);
+server.listen(nconf.get("server:port"), nconf.get("server:host"));
