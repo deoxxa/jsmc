@@ -15,6 +15,16 @@ for(var i = 0; i < config.length; i++) {
   plugin(game);
 }
 
+for (var x = -7; x <= 7; ++x) {
+  for (var y = -7; y <= 7; ++y) {
+    (function(x, y) {
+      game.map.get_chunk(x, y, function(err, chunk) {
+        console.log("chunk " + [x, y].join(",") + " is done");
+      });
+    }(x, y));
+  }
+}
+
 var server = new Server();
 
 server.on("client:connect", game.add_client.bind(game));
