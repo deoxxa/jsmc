@@ -1,12 +1,12 @@
 {
   "server": {
-    "name": "Minecraft.JS",
-    "max_players": 25,
-    "difficulty": 0,
     "port": 25565
   },
   "game": {
-    "mode": 1
+    "name": "Another jsmc server",
+    "mode": 1,
+    "max_players": 25,
+    "difficulty": 0
   },
   "plugins": [
     "server-ping.js",
