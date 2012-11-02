@@ -1,6 +1,13 @@
 {
-  "port": 25565,
-  "gamemode": 1,
+  "server": {
+    "name": "Minecraft.JS",
+    "max_players": 25,
+    "difficulty": 0,
+    "port": 25565
+  },
+  "game": {
+    "mode": 1
+  },
   "plugins": [
     "server-ping.js",
     "ping.js",

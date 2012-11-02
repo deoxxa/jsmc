@@ -8,7 +8,10 @@ var Game = require("./lib/game"),
     Server = require("./lib/server");
 
 var game = new Game({
-  mode: nconf.get("gamemode"),
+	name: nconf.get("server:name"),
+  mode: nconf.get("game:mode"),
+  max_players: nconf.get("server:max_players"),
+  difficulty: nconf.get("server:difficulty")
 });
 
 var plugins = nconf.get("plugins");
@@ -31,7 +34,7 @@ for (var x = -7; x <= 7; ++x) {
 }
 
 var server = new Server();
-var port = nconf.get("port") || 25565;
+var port = nconf.get("server:port") || 25565;
 
 server.on("client:connect", game.add_client.bind(game));
 
