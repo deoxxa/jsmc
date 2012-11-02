@@ -1,22 +1,22 @@
 #!/usr/bin/env node
 
-var nconf = require('nconf');
+var nconf = require("nconf");
 
-nconf.file({ file: "./config.json" });
+nconf.file({file: "./config.json"});
 
 var Game = require("./lib/game"),
     Server = require("./lib/server");
 
 var game = new Game({
-	name: nconf.get("server:name"),
+  name: nconf.get("game:name"),
   mode: nconf.get("game:mode"),
-  max_players: nconf.get("server:max_players"),
-  difficulty: nconf.get("server:difficulty")
+  max_players: nconf.get("game:max_players"),
+  difficulty: nconf.get("game:difficulty")
 });
 
 var plugins = nconf.get("plugins");
 
-for(var i = 0; i < plugins.length; i++) {
+for (var i = 0; i < plugins.length; i++) {
   var file = plugins[i];
   console.log("Loading " + file);
   var plugin = require("./plugins/" + file);
