@@ -2,7 +2,18 @@
 
 var nconf = require("nconf");
 
-nconf.file({file: "./config.json"});
+nconf.file({file: "./config.json"}).defaults({
+  server: {
+    port: 25565,
+  },
+  game: {
+    name: "Another jsmc server",
+    mode: 1,
+    max_players: 25,
+    difficulty: 0,
+  },
+  plugins: [],
+});
 
 var Game = require("./lib/game"),
     Server = require("./lib/server");
