@@ -40,7 +40,7 @@ var update_positions = function update_positions(game) {
 
     var packet;
 
-    if (x_delta > -4 && x_delta < 4 && y_delta > -4 && y_delta < 4 && z_delta > -4 && z_delta < 4) {
+    if (x_delta > -3 && x_delta < 3 && y_delta > -3 && y_delta < 3 && z_delta > -3 && z_delta < 3) {
       packet = {
         pid:   0x21,
         eid:   player.eid,
