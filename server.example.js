@@ -54,14 +54,14 @@ var ChatPlugin = require("./plugins/chat");
 ChatPlugin(game);
 
 // This plugin handles... You guessed it, digging!
-var DiggingPlugin = require("./plugins/digging"),
+var DiggingPlugin = require("./plugins/digging");
 DiggingPlugin(game);
 
 // This plugin does all the setup of a player to get them into the world. This
 // includes things like setting their initial spawn position, sending them a
 // bunch of chunks to get started, telling them about other players connected,
 // etc.
-var InitialSpawnPlugin = require("./plugins/intial-spawn");
+var InitialSpawnPlugin = require("./plugins/initial-spawn");
 InitialSpawnPlugin(game);
 
 // This plugin displays chat messages when players join or leave the game.
