@@ -5,8 +5,8 @@ module.exports = function(game) {
     console.log("doing initial spawn stuff with player " + player.name);
 
     var sent_chunks = 0;
-    for (var x=-7;x<=7;++x) {
-      for (var z=-7;z<=7;++z) {
+    for (var x = -7; x < 7; ++x) {
+      for (var z = -7; z < 7; ++z) {
         (function(x, z) {
           game.map.get_chunk(x, z, function(err, chunk) {
             zlib.deflate(chunk.data, function(err, data) {

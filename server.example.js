@@ -85,8 +85,8 @@ RespawnPlugin(game);
 
 // Generate the spawn area so the first player to join doesn't have to sit
 // around like an idiot waiting while they log in.
-for (var x = -7; x <= 7; ++x) {
-  for (var y = -7; y <= 7; ++y) {
+for (var x = -7; x < 7; ++x) {
+  for (var y = -7; y < 7; ++y) {
     (function(x, y) {
       game.map.get_chunk(x, y, function(err, chunk) {
         console.log("chunk " + [x, y].join(",") + " is done");
