@@ -26,6 +26,43 @@ nconf.defaults({
   },
 });
 
+// This is the `Map` object. It keeps a list of routines that generate your map.
+var Map = require("./lib/map");
+
+var map = new Map();
+
+// The `MapgenSimplex` plugin generates pseudorandom terrain using an algorithm
+// related to _Perlin Noise_, [Simplex Noise](http://en.wikipedia.org/wiki/Simplex_noise).
+// The argument you see here is the "seed" value.
+var MapgenSimplex = require("./plugins/mapgen-simplex"),
+    mapgen_simplex = new MapgenSimplex(1);
+map.add_generator(mapgen_simplex.modify.bind(mapgen_simplex));
+
+// The `MapgenWater` plugin fills the bottom of the map, up to a specified `y`
+// value, with water. It does this by replacing all air blocks with a `y` less
+// than that specified with water.
+var MapgenWater = require("./plugins/mapgen-water"),
+    mapgen_water = new MapgenWater(100);
+map.add_generator(mapgen_water.modify.bind(mapgen_water));
+
+// The `MapgenGlowstone` plugin places glowstone randomly. Yay! Great for
+// testing lighting, or just impressing your friends.
+var MapgenGlowstone = require("./plugins/mapgen-glowstone"),
+    mapgen_glowstone = new MapgenGlowstone();
+map.add_generator(mapgen_glowstone.modify.bind(mapgen_glowstone));
+
+// The `MapgenGlassGrid` plugin puts a grid of glass pillars in the world.
+// Again this is mostly useful for debugging.
+var MapgenGlassGrid = require("./plugins/mapgen-glass-grid"),
+    mapgen_glass_grid = new MapgenGlassGrid();
+map.add_generator(mapgen_glass_grid.modify.bind(mapgen_glass_grid));
+
+// The `MapgenFloor` plugin puts a single layer of bedrock at the bottom of the
+// world. This stops people digging through to nothing by accident.
+var MapgenFloor = require("./plugins/mapgen-floor"),
+    mapgen_floor = new MapgenFloor();
+map.add_generator(mapgen_floor.modify.bind(mapgen_floor));
+
 // This is the `Game` object. It's (probably) the core of your server. It holds
 // a lot of the wiring between different components.
 var Game = require("./lib/game");
@@ -34,7 +71,8 @@ var game = new Game({
   name: nconf.get("game:name"),
   mode: nconf.get("game:mode"),
   max_players: nconf.get("game:max_players"),
-  difficulty: nconf.get("game:difficulty")
+  difficulty: nconf.get("game:difficulty"),
+  map: map,
 });
 
 // Load some plugins
@@ -83,18 +121,6 @@ PingPlugin(game);
 var RespawnPlugin = require("./plugins/respawn");
 RespawnPlugin(game);
 
-// Generate the spawn area so the first player to join doesn't have to sit
-// around like an idiot waiting while they log in.
-for (var x = -7; x < 7; ++x) {
-  for (var y = -7; y < 7; ++y) {
-    (function(x, y) {
-      game.map.get_chunk(x, y, function(err, chunk) {
-        console.log("chunk " + [x, y].join(",") + " is done");
-      });
-    }(x, y));
-  }
-}
-
 // The server object is basically a wrapper around `net.Server` that constructs
 // `Client` objects as they connect.
 
@@ -121,7 +147,21 @@ server.on("server:close", function() {
   console.log("closed");
 });
 
-// And here's the final point of setup - opening up the server so people can
-// connect!
+// Generate the spawn area so the first player to join doesn't have to sit
+// around like an idiot waiting while they log in.
+var chunks_generated = 0;
+for (var x = -7; x < 7; ++x) {
+  for (var y = -7; y < 7; ++y) {
+    game.map.get_chunk(x, y, function(err, chunk) {
+      // We keep count of how many chunks have been generated here.
+      chunks_generated++;
 
-server.listen(nconf.get("server:port"), nconf.get("server:host"));
+      // This is 14x14 chunks
+      if (chunks_generated === 196) {
+        // We've loaded all the chunks we need, so it's time to start the
+        // server listening so people can connect!
+        server.listen(nconf.get("server:port"), nconf.get("server:host"));
+      }
+    });
+  }
+}
