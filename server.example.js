@@ -121,6 +121,10 @@ PingPlugin(game);
 var RespawnPlugin = require("./plugins/respawn");
 RespawnPlugin(game);
 
+// This plugin despawns players when they quit the game.
+var DespawnPlugin = require("./plugins/despawn");
+DespawnPlugin(game);
+
 // The server object is basically a wrapper around `net.Server` that constructs
 // `Client` objects as they connect.
 
