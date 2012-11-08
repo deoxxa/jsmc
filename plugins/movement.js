@@ -1,12 +1,14 @@
-module.exports = function(game) {
-  game.on("player:join", function(player) {
-    player.client.on("packet:0a", on_move.bind(player));
-    player.client.on("packet:0b", on_move.bind(player));
-    player.client.on("packet:0c", on_move.bind(player));
-    player.client.on("packet:0d", on_move.bind(player));
-  });
+module.exports = function() {
+  return function(game) {
+    game.on("player:join", function(player) {
+      player.client.on("packet:0a", on_move.bind(player));
+      player.client.on("packet:0b", on_move.bind(player));
+      player.client.on("packet:0c", on_move.bind(player));
+      player.client.on("packet:0d", on_move.bind(player));
+    });
 
-  game.on("tick", update_positions.bind(null, game));
+    game.on("tick", update_positions.bind(null, game));
+  };
 };
 
 var on_move = function on_move(packet) {

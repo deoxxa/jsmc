@@ -80,50 +80,50 @@ var game = new Game({
 // This plugin provides the server ping functionality for reporting server
 // status in the "Play Multiplayer" screen of Minecraft.
 var ServerPingPlugin = require("./plugins/server-ping");
-ServerPingPlugin(game);
+game.use(ServerPingPlugin());
 
 // This plugin handles login for players, creating a new Player object,
 // attaching it to a client and finally adding it to the active Game object.
 var LoginPlugin = require("./plugins/login");
-LoginPlugin(game);
+game.use(LoginPlugin());
 
 // This plugin handles chat messages between players.
 var ChatPlugin = require("./plugins/chat");
-ChatPlugin(game);
+game.use(ChatPlugin());
 
 // This plugin handles... You guessed it, digging!
 var DiggingPlugin = require("./plugins/digging");
-DiggingPlugin(game);
+game.use(DiggingPlugin());
 
 // This plugin does all the setup of a player to get them into the world. This
 // includes things like setting their initial spawn position, sending them a
 // bunch of chunks to get started, telling them about other players connected,
 // etc.
 var InitialSpawnPlugin = require("./plugins/initial-spawn");
-InitialSpawnPlugin(game);
+game.use(InitialSpawnPlugin());
 
 // This plugin displays chat messages when players join or leave the game.
 var JoinPartPlugin = require("./plugins/join-part");
-JoinPartPlugin(game);
+game.use(JoinPartPlugin());
 
 // This plugin handles movement of players. It keeps track of their position,
 // sends the information to other players, and so on.
 var MovementPlugin = require("./plugins/movement");
-MovementPlugin(game);
+game.use(MovementPlugin());
 
 // This plugin sends periodic ping messages to connected players, to make sure
 // they don't time out.
 var PingPlugin = require("./plugins/ping");
-PingPlugin(game);
+game.use(PingPlugin());
 
 // This plugin provides a `/suicide` command for players to kill themselves.
 // It's largely used for debugging or getting yourself out of a wall...
 var RespawnPlugin = require("./plugins/respawn");
-RespawnPlugin(game);
+game.use(RespawnPlugin());
 
 // This plugin despawns players when they quit the game.
 var DespawnPlugin = require("./plugins/despawn");
-DespawnPlugin(game);
+game.use(DespawnPlugin());
 
 // The server object is basically a wrapper around `net.Server` that constructs
 // `Client` objects as they connect.
