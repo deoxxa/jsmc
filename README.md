@@ -36,7 +36,7 @@ Usage
 -----
 
 ```
-$ ./server.js
+$ ./server.example.js config.default.json
 ```
 
 License

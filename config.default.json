@@ -7,17 +7,5 @@
     "mode": 1,
     "max_players": 25,
     "difficulty": 0
-  },
-  "plugins": [
-    "server-ping.js",
-    "ping.js",
-    "login.js",
-    "initial-spawn.js",
-    "movement.js",
-    "join-part.js",
-    "chat.js",
-    "respawn.js",
-    "moduleloader.js",
-    "digging.js"
-  ]
+  }
 }
