@@ -31,6 +31,8 @@ Available via [npm](http://npmjs.org/):
 Or via git:
 
 > $ git clone git://github.com/deoxxa/jsmc.git
+> $ cd jsmc
+> $ npm install
 
 Usage
 -----
