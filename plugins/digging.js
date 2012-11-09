@@ -10,12 +10,14 @@ module.exports = function() {
               block_z = packet.z & 0x0f,
               block_y = packet.y;
 
-          game.map.get_chunk_absolute(packet.x, packet.z).set_block_type(block_x, block_z, block_y, 0);
+          game.map.get_abs_chunk(packet.x, packet.z, function(err, chunk) {
+            chunk.set_block_type(block_x, block_z, block_y, 0);
 
-          console.log("Removed block " + [block_x , block_z, block_y].join(":"));
+            console.log("Removed block " + [block_x , block_z, block_y].join(":"));
 
-          game.clients.forEach(function(client) {
-            client.emit("data", {pid: 0x35, x: block_x, y: block_y, z: block_z, type: 0, metadata: 0});
+            game.clients.forEach(function(client) {
+              client.emit("data", {pid: 0x35, x: block_x, y: block_y, z: block_z, type: 0, metadata: 0});
+            });
           });
         }
       });
