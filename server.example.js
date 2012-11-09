@@ -31,6 +31,12 @@ var Map = require("./lib/map");
 
 var map = new Map();
 
+// The `MapgenLoad` plugin loads existing map data from disk. The argument given
+// to it is the directory to store map data in.
+var MapgenLoad = require("./plugins/mapgen-load"),
+    mapgen_load = new MapgenLoad(__dirname + "/map");
+map.add_generator(mapgen_load.modify.bind(mapgen_load));
+
 // The `MapgenSimplex` plugin generates pseudorandom terrain using an algorithm
 // related to _Perlin Noise_, [Simplex Noise](http://en.wikipedia.org/wiki/Simplex_noise).
 // The argument you see here is the "seed" value.
@@ -124,6 +130,11 @@ game.use(RespawnPlugin());
 // This plugin despawns players when they quit the game.
 var DespawnPlugin = require("./plugins/despawn");
 game.use(DespawnPlugin());
+
+// This plugin saves the map to disk every now and then, if it's changed. The
+// argument given to it is the directory in which to save the map data.
+var SaveMapPlugin = require("./plugins/save-map");
+game.use(SaveMapPlugin(__dirname + "/map"));
 
 // The server object is basically a wrapper around `net.Server` that constructs
 // `Client` objects as they connect.
