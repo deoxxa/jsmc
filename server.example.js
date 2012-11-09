@@ -165,14 +165,14 @@ server.on("server:close", function() {
 // Generate the spawn area so the first player to join doesn't have to sit
 // around like an idiot waiting while they log in.
 var chunks_generated = 0;
-for (var x = -7; x < 7; ++x) {
-  for (var y = -7; y < 7; ++y) {
+for (var x = -7; x <= 7; ++x) {
+  for (var y = -7; y <= 7; ++y) {
     game.map.get_chunk(x, y, function(err, chunk) {
       // We keep count of how many chunks have been generated here.
       chunks_generated++;
 
-      // This is 14x14 chunks
-      if (chunks_generated === 196) {
+      // This is 15x15 chunks
+      if (chunks_generated === 225) {
         // We've loaded all the chunks we need, so it's time to start the
         // server listening so people can connect!
         server.listen(nconf.get("server:port"), nconf.get("server:host"));

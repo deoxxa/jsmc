@@ -6,8 +6,8 @@ module.exports = function() {
       console.log("doing initial spawn stuff with player " + player.name);
 
       var sent_chunks = 0;
-      for (var x = -7; x < 7; ++x) {
-        for (var z = -7; z < 7; ++z) {
+      for (var x = -7; x <= 7; ++x) {
+        for (var z = -7; z <= 7; ++z) {
           (function(x, z) {
             game.map.get_chunk(x, z, function(err, chunk) {
               zlib.deflate(chunk.data, function(err, data) {
@@ -15,7 +15,7 @@ module.exports = function() {
 
                 sent_chunks++;
 
-                if (sent_chunks === 49) {
+                if (sent_chunks === 225) {
                   game.players.forEach(function(other_player) {
                     if (player === other_player) { return; }
 
