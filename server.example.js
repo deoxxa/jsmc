@@ -78,6 +78,8 @@ var game = new Game({
   mode: nconf.get("game:mode"),
   max_players: nconf.get("game:max_players"),
   difficulty: nconf.get("game:difficulty"),
+  admins: nconf.get("game:admins"),
+  banned: nconf.get("game:banned"),
   map: map,
 });
 
@@ -139,6 +141,10 @@ game.use(DespawnPlugin());
 // argument given to it is the directory in which to save the map data.
 var SaveMapPlugin = require("./plugins/save-map");
 game.use(SaveMapPlugin(__dirname + "/map"));
+
+// Provides administrative commands `/ban` `/op` etc.
+var AdminPlugin = require('./plugins/admin');
+game.use(AdminPlugin());
 
 // The server object is basically a wrapper around `net.Server` that constructs
 // `Client` objects as they connect.
