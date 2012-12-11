@@ -6,6 +6,12 @@
     "name": "Another jsmc server",
     "mode": 1,
     "max_players": 25,
-    "difficulty": 0
+    "difficulty": 0,
+    "admins": [ 
+
+    ],
+    "banned": [
+    
+    ]
   }
 }

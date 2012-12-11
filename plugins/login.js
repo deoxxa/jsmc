@@ -13,7 +13,18 @@ module.exports = function() {
           for (y = 255; y > 0 && chunk.get_block_type(0, 0, y) === 0; --y) {}
           y += 2;
 
+          if(~game.banned.indexOf(packet.username)) {
+            client.emit("data", {
+              pid: 0xff,
+              message: "Banned."
+            });
+            return;
+          }
+
           var player = new Player(client, game, packet.username, {x: 0, y: y, z: 0, stance: y + 1.62, yaw: 0, pitch: 0});
+
+          if(~game.admins.indexOf(packet.username))
+            player.admin = true;
 
           console.log("created player " + player.name + " and spawning at " + [player.position.x, player.position.y, player.position.z].join(","));
 
