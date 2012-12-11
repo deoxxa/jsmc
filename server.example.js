@@ -107,6 +107,10 @@ game.use(ChatPlugin());
 var DiggingPlugin = require("./plugins/digging");
 game.use(DiggingPlugin());
 
+// This plugin handles.. BUILDING!
+var BuildingPlugin = require('./plugins/building');
+game.use(BuildingPlugin());
+
 // This plugin does all the setup of a player to get them into the world. This
 // includes things like setting their initial spawn position, sending them a
 // bunch of chunks to get started, telling them about other players connected,
