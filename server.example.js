@@ -88,6 +88,10 @@ var game = new Game({
 var ServerPingPlugin = require("./plugins/server-ping");
 game.use(ServerPingPlugin());
 
+// This plugin gracefully stops the server on Ctrl+C (SIGINT).
+var ServerStopPlugin = require('./plugins/server-stop');
+game.use(ServerStopPlugin());
+
 // This plugin handles login for players, creating a new Player object,
 // attaching it to a client and finally adding it to the active Game object.
 var LoginPlugin = require("./plugins/login");

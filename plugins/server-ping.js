@@ -10,7 +10,7 @@ module.exports = function() {
 
         client.emit("data", {
           pid: 0xff,
-          message: ["§1", "47", "1.4.2", game.name, game.players.length, game.max_players].join("\x00"),
+          message: ["§1", "49", "1.4.5", game.name, game.players.length, game.max_players].join("\x00"),
         });
 
         client.end();
