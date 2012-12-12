@@ -48,6 +48,27 @@ module.exports = function() {
               break;
             }
 
+            case "/gamemode": {
+              m.shift();
+              var mode = m[m.length-1];
+              if(mode > 1 || mode < 0) {
+                player.message("Invalid game mode.");
+                return;
+              }
+              if(m.length>1) {
+                player.message("Setting gamemode for " + m[0] + " to: " + mode);
+                game.players.forEach(function(player) {
+                  if(player.name == m[0]) {
+                    player.setGamemode(parseInt(mode));
+                  }
+                });
+              } else {
+                player.message("Setting gamemode to: " + mode);
+                game.setGamemode(parseInt(mode));
+              }
+              break;
+            }
+
           }
         }
       });
