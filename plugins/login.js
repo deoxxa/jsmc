@@ -21,12 +21,12 @@ module.exports = function() {
             return;
           }
 
-          var player = new Player(client, game, packet.username, {x: 0, y: y, z: 0, stance: y + 1.62, yaw: 0, pitch: 0});
+          var player = new Player(game, {client: client, name: packet.username, x: 0, y: y, z: 0, stance: y + 1.62, yaw: 0, pitch: 0});
 
           if(~game.admins.indexOf(packet.username))
             player.admin = true;
 
-          console.log("created player " + player.name + " and spawning at " + [player.position.x, player.position.y, player.position.z].join(","));
+          console.log("created player " + player.name + " and spawning at " + [player.x, player.y, player.z].join(","));
 
           console.log("logging player in");
 
