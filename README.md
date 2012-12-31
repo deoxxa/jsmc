@@ -21,6 +21,11 @@ Features
 * Plugins all the way down!
 * Cross platform (runs anywhere node.js does)!
 
+Compatibility
+-------------
+
+The latest supported version of Minecraft client is 1.4.2.
+
 Installation
 ------------
 
