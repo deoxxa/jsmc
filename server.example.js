@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+//#!/usr/bin/env supervisor
 
 // This is an example `server.js`! It shows you how jsmc allows you to very
 // heavily customise your server in an easy to manage way.
@@ -149,6 +150,18 @@ game.use(SaveMapPlugin(__dirname + "/map"));
 // Provides administrative commands `/ban` `/op` etc.
 var AdminPlugin = require('./plugins/admin');
 game.use(AdminPlugin());
+
+// This is used to keep track of player ability state between the client and the server
+var PlayerAbilitiesPlugin = require('./plugins/player-abilities');
+game.use(PlayerAbilitiesPlugin());
+
+// This plugin manages players health & hunger
+var PlayerHealthPlugin = require('./plugins/player-health');
+game.use(PlayerHealthPlugin());
+
+// This plugin controlls falling damage/death
+var PlayerFallPlugin = require('./plugins/player-fall');
+game.use(PlayerFallPlugin());
 
 // The server object is basically a wrapper around `net.Server` that constructs
 // `Client` objects as they connect.
