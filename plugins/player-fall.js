@@ -20,7 +20,6 @@ module.exports = function() {
 
 var set_falling_pos = function set_falling_pos(player) {
     player.start_falling_pos = player.y;
-    console.log('set falling pos: ' + player.y);
   }
 
 var handle_falling_pos = function handle_falling_pos(flying) {

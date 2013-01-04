@@ -24,7 +24,7 @@ var update_health = function update_health(game) {
     }).forEach(function(player) {
       // modify the players health to match the damage done
       player.health -= player.damaged;
-      //TODO: send out necessary packet to update the health
+      // send out necessary packet to update the health
       player.health < 0 ? player.kill() : player.setHealth(player.health, player.food, player.food_saturation);
       // reset the damage done
       player.damaged = 0;

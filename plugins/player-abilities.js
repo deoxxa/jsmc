@@ -19,7 +19,6 @@ module.exports = function() {
         }
 
         player.flying = flying;
-        console.log("emitting flying: " + flying);
         // trigger an event here to notify any plugins listening for flying status
         player.emit("flying", flying);
       });

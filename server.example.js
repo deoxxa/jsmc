@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-//#!/usr/bin/env supervisor
 
 // This is an example `server.js`! It shows you how jsmc allows you to very
 // heavily customise your server in an easy to manage way.
