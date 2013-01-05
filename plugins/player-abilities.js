@@ -15,7 +15,7 @@ module.exports = function() {
 
         if(player.mode != creativeMode) {
           // something weird is happening here, lets log it
-          console.log('[Warning] Player client side game mode does not match server side!');
+          console.warn('[Warning] Player client side game mode does not match server side!');
         }
 
         player.flying = flying;
