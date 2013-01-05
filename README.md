@@ -24,7 +24,7 @@ Features
 Compatibility
 -------------
 
-The latest supported version of Minecraft client is 1.4.2.
+The latest supported version of Minecraft client is 1.4.6.
 
 Installation
 ------------
